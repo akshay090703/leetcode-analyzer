@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://alfa-leetcode-api.onrender.com';
