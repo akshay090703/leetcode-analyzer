@@ -126,6 +126,6 @@ export default function ProfilePage({ params }: { params: { username: string } }
             <RecentSubmissions submissions={data.profileData?.recentSubmissions} />
           </Suspense>
         </div>
-      </div> : <div>No content found!</div>)
+      </div> : <div className='text-center'>No content found!</div>)
   );
 }
