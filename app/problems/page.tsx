@@ -20,7 +20,9 @@ export default function ProblemsPage() {
             </div>
 
             <div className="space-y-6">
-                <ProblemFilters tag={tag} setTag={setTag} difficulty={difficulty} setDifficulty={setDifficulty} />
+                <Suspense fallback={<div>Loading...</div>}>
+                    <ProblemFilters tag={tag} setTag={setTag} difficulty={difficulty} setDifficulty={setDifficulty} />
+                </Suspense>
                 <Suspense fallback={<Skeleton className="h-96 w-full" />}>
                     <ProblemList tag={tag} difficulty={difficulty} />
                 </Suspense>
