@@ -5,15 +5,17 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { SearchIcon } from 'lucide-react';
+import { useLocalStorage } from "usehooks-ts";
 
 export function SearchForm() {
   const [username, setUsername] = useState('');
   const router = useRouter();
+  const [leetcodeUsername, setLeetcodeUsername] = useLocalStorage('leetcodeUsername', '');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (username.trim()) {
-      localStorage.setItem('leetcodeUsername', username);
+      setLeetcodeUsername(username);
       router.push(`/profile/${username}`);
     }
   };

@@ -32,10 +32,8 @@ export function ProblemList({ tag, difficulty }: { tag: string, difficulty: "EAS
         getProblems({ limit: 20, tags: tags, difficulty: difficulty }).then(setProblems);
     }, [debouncedTag, difficulty]);
 
-    if (!problems) return null;
-
     return (
-        <div className="rounded-md border">
+        problems ? (<div className="rounded-md border">
             <Table>
                 <TableHeader>
                     <TableRow>
@@ -85,6 +83,6 @@ export function ProblemList({ tag, difficulty }: { tag: string, difficulty: "EAS
                     ))}
                 </TableBody>
             </Table>
-        </div>
-    );
+        </div>)
+            : null);
 }

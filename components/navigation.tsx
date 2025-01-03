@@ -5,10 +5,11 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Home, List, MessageSquare, User } from 'lucide-react';
 import { ModeToggle } from './toggle-mode';
+import { useLocalStorage } from 'usehooks-ts';
 
 export function Navigation() {
     const pathname = usePathname();
-    const storedUsername = localStorage.getItem('leetcodeUsername');
+    const [leetcodeUsername] = useLocalStorage('leetcodeUsername', '');
 
     const links = [
         { href: '/', label: 'Home', icon: Home },
@@ -31,7 +32,7 @@ export function Navigation() {
                                     pathname === href
                                         ? 'text-primary'
                                         : 'text-muted-foreground',
-                                    href === '/profile' && !storedUsername && 'hidden'
+                                    href === '/profile' && !leetcodeUsername && 'hidden'
                                 )}
                             >
                                 <Icon className="h-4 w-4" />

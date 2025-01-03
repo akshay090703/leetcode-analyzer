@@ -3,14 +3,15 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useLocalStorage } from 'usehooks-ts';
 
 const Profile = () => {
     const router = useRouter();
+    const [leetcodeUsername] = useLocalStorage('leetcodeUsername', '');
 
     useEffect(() => {
-        const storedUsername = localStorage.getItem('leetcodeUsername');
-        if (storedUsername) {
-            router.push(`/profile/${storedUsername}`);
+        if (leetcodeUsername) {
+            router.push(`/profile/${leetcodeUsername}`);
         } else {
             router.push('/');
         }
