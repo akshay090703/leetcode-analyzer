@@ -175,3 +175,45 @@ export interface TrendingDiscussion {
 export interface TrendingDiscussionsResponse {
   cachedTrendingCategoryTopics: TrendingDiscussion[];
 }
+
+export interface DiscussionTopic {
+  id: number;
+  viewCount: number;
+  topLevelCommentCount: number;
+  subscribed: boolean;
+  title: string;
+  pinned: boolean;
+  tags: string[];
+  hideFromTrending: boolean;
+  post: {
+    id: number;
+    voteCount: number;
+    voteStatus: number;
+    content: string;
+    updationDate: number;
+    creationDate: number;
+    status: string | null;
+    isHidden: boolean | null;
+    coinRewards: any[];
+    author: {
+      isDiscussAdmin: boolean;
+      isDiscussStaff: boolean;
+      username: string;
+      nameColor: string | null;
+      activeBadge: any | null;
+      profile: {
+        userAvatar: string;
+        reputation: number;
+      };
+      isActive: boolean;
+    };
+    authorIsModerator: boolean;
+    isOwnPost: boolean;
+  };
+}
+
+export interface DiscussionTopicResponse {
+  data: {
+    topic: DiscussionTopic;
+  };
+}
